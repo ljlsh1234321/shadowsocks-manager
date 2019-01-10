@@ -99,6 +99,7 @@ const sendMail = async (to, subject, text, options = {}) => {
       transporter.sendMail({
         from: `"${ config.plugins.email.name || '' }" <${ config.plugins.email.email || config.plugins.email.username }>`,
         to,
+        replyTo: `"${ config.plugins.email.name || '' }" <${ config.plugins.email.replyTo }>`,
         subject,
         text,
       }, (error, info) => {
