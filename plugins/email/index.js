@@ -16,15 +16,9 @@ if(!config.plugins.email.type) {
 if(config.plugins.email.type === 'smtp') {
   emailConfig = {
     host: config.plugins.email.host,
-    port: config.plugins.email.port || 465,
-    secure: config.plugins.email.hasOwnProperty('secure') ? config.plugins.email.secure : true,
-    auth: {
-      user: config.plugins.email.username,
-      pass: config.plugins.email.password,
-    },
-    tls: {
-      rejectUnauthorized: !config.plugins.email.allowUnauthorizedTls,
-    },
+    port: config.plugins.email.port || 25,
+    secure: config.plugins.email.hasOwnProperty('secure') ? config.plugins.email.secure : false,
+    ignoreTLS: config.plugins.email.hasOwnProperty('ignoreTLS') ? config.plugins.email.ignoreTLS : false,
     proxy: config.plugins.email.proxy || '',
   };
   transporter = nodemailer.createTransport(emailConfig);
