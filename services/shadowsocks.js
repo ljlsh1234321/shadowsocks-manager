@@ -12,9 +12,10 @@ let clientIp = [];
 const config = appRequire('services/config').all();
 const host = config.shadowsocks.address.split(':')[0];
 const port = +config.shadowsocks.address.split(':')[1];
+const mHost = config.manager.address.split(':')[0];
 const mPort = +config.manager.address.split(':')[1];
 
-client.bind(mPort);
+client.bind(mPort, mHost);
 
 const knex = appRequire('init/knex').knex;
 
