@@ -33,8 +33,7 @@ const configure = {
 log4js.configure(configure);
 
 const setConsoleLevel = level => {
-  configure.appenders.filter = { type: 'logLevelFilter', appender: 'console', level };
-  log4js.configure(configure);
+  log4js.setGlobalLogLevel(level);
 };
 
 const setFileAppenders = (filename) => {
